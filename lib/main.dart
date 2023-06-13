@@ -10,6 +10,7 @@ import 'on_boarding.dart';
 import 'on_boarding2.dart';
 import 'on_boarding3.dart';
 import 'tabs/tabCustomer.dart';
+import 'tabs_login/customer.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +45,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TabCustomer(),
+      home: Customer(),
     );
   }
 }

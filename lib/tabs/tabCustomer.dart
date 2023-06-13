@@ -1,3 +1,7 @@
+import 'package:final_flutter_project/controller/api_controller.dart';
+import 'package:final_flutter_project/controller/api_response.dart';
+import 'package:final_flutter_project/controller/user.dart';
+import 'package:final_flutter_project/home_activity.dart';
 import 'package:flutter/material.dart';
 class TabCustomer extends StatefulWidget {
   const TabCustomer({Key? key}) : super(key: key);
@@ -94,9 +98,50 @@ class _TabCustomerState extends State<TabCustomer> {
                   )
               ),
             ),
+          ) ,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(160, 70, 0, 0),
+            child: SizedBox(
+              width: 160,
+              height: 60,
+              child: ElevatedButton(
+                  onPressed: ()async => await _prefFormRegister()
+                 , child: Text("SIGN UP" , style: TextStyle(color: Colors.white , fontSize: 20),)),
+            ),
           )
         ],
       ),
     );
+  }
+
+  Future<void> _prefFormRegister()async {
+    if(_checkData()){
+      await _register();
+    }
+  }
+
+  bool _checkData(){
+    if(emailController.text.isNotEmpty &&
+        passwordController.text.isNotEmpty &&
+        phoneController.text.isNotEmpty &&
+        nameController.text.isNotEmpty){
+      return true ;
+    }
+    return false ;
+  }
+  Future<void> _register() async{
+    ApiResponse response = await ApiController().register(user1: user);
+    if(response.success!){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeActivity()));
+    }
+  }
+
+  User get user{
+    User user1 = User();
+    user1.email = emailController.text ;
+    user1.password = passwordController.text ;
+    user1.name = nameController.text ;
+    user1.phone = phoneController.text ;
+    return user1 ;
   }
 }

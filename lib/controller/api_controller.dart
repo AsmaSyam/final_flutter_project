@@ -10,7 +10,7 @@ import 'api_settings.dart';
 
 class ApiController{
 
-  login({email , password}) async {
+  Future<ApiResponse> login({email , password}) async {
     Uri uri = Uri.parse(ApiSettings.login_uri);
     var map = {
       "email" : email ,
@@ -33,9 +33,10 @@ class ApiController{
       }
       return rresponse;
     }
+    return ApiResponse(success: false , message: "Some thing is wrong");
   }
 
-  register({required User user1}) async {
+  Future<ApiResponse> register({required User user1}) async {
     Uri uri = Uri.parse(ApiSettings.register_uri);
 
     http.Response response = await http.post(uri ,
@@ -47,6 +48,8 @@ class ApiController{
       ApiResponse rresponse = ApiResponse.fromJson(jsonResponse);
       return rresponse;
     }
+    return ApiResponse(success: false , message: "Some thing is wrong");
+
   }
 
 }

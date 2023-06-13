@@ -1,3 +1,4 @@
+import 'package:final_flutter_project/on_boarding3.dart';
 import 'package:flutter/material.dart';
 
 import 'on_boarding.dart';
@@ -14,9 +15,7 @@ class _SplashActivityState extends State<SplashActivity> {
   void initState(){
     super.initState();
       Future.delayed(Duration(seconds: 3), (){
-        Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) =>  onBoarding()));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => onBoarding()));
          });
   }
 

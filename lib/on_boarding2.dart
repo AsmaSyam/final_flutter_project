@@ -32,9 +32,8 @@ class OnBoarding2 extends StatelessWidget{
               width: 310,
               height: 50,
               child: ElevatedButton(onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  OnBoarding3()));                      },
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OnBoarding3()));
+                },
                   child: Text("NEXT")),
             ),
           )

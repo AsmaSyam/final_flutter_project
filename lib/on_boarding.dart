@@ -54,9 +54,8 @@ class _onBoardingState extends State<onBoarding> {
               width: 310,
               height: 50,
               child: ElevatedButton(onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  OnBoarding2()));              },
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OnBoarding2()));
+                },
                   child: Text("NEXT")),
             ),
           )

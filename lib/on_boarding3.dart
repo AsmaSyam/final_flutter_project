@@ -1,5 +1,8 @@
 import 'package:final_flutter_project/home_activity.dart';
+import 'package:final_flutter_project/login_activity.dart';
 import 'package:flutter/material.dart';
+
+import 'on_boarding2.dart';
 
 class OnBoarding3 extends StatelessWidget{
   @override
@@ -32,9 +35,7 @@ class OnBoarding3 extends StatelessWidget{
               width: 310,
               height: 50,
               child: ElevatedButton(onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) =>  HomeActivity()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginActivity()));
                 },
                   child: Text("NEXT")),
             ),
