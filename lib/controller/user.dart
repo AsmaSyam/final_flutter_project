@@ -6,6 +6,7 @@ class User {
   String? phone;
   String? active;
   String? token;
+  String? password;
 
   User(
       {this.id,
@@ -35,6 +36,14 @@ class User {
     data['phone'] = this.phone;
     data['active'] = this.active;
     data['token'] = this.token;
+    return data;
+  }
+  Map<String, dynamic> toJsonRegister() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['email'] = this.email;
+    data['password'] = this.password;
+    data['phone'] = this.phone;
     return data;
   }
 }

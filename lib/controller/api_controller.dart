@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:final_flutter_project/controller/api_response.dart';
+import 'package:final_flutter_project/controller/user.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 
 import 'api_settings.dart';
@@ -23,9 +25,28 @@ class ApiController{
       var jsonResponse  = jsonDecode(response.body);
       ApiResponse rresponse = ApiResponse.fromJson(jsonResponse);
       if(response.statusCode == 200){
-
+        if(rresponse.data != null){
+          GetStorage().write("token", rresponse.data!.token);
+          GetStorage().write("email", rresponse.data!.email);
+          GetStorage().write("name", rresponse.data!.name);
+        }
       }
       return rresponse;
     }
   }
+
+  register({required User user1}) async {
+    Uri uri = Uri.parse(ApiSettings.register_uri);
+
+    http.Response response = await http.post(uri ,
+        body: user1.toJsonRegister() ,
+        headers: {HttpHeaders.contentTypeHeader: 'application/json'});
+
+    if(response.statusCode == 201 || response.statusCode == 400){
+      var jsonResponse  = jsonDecode(response.body);
+      ApiResponse rresponse = ApiResponse.fromJson(jsonResponse);
+      return rresponse;
+    }
+  }
+
 }
