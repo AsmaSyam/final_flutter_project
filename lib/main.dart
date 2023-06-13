@@ -1,13 +1,19 @@
+import 'package:final_flutter_project/shared_pref_controller.dart';
 import 'package:final_flutter_project/splash_activity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'home_activity.dart';
+import 'login_activity.dart';
 import 'on_boarding.dart';
 import 'on_boarding2.dart';
 import 'on_boarding3.dart';
+import 'tabs/tabCustomer.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -38,7 +44,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomeActivity(),
+      home: TabCustomer(),
     );
   }
 }
