@@ -47,6 +47,7 @@ class ApiController{
       //  headers: {HttpHeaders.contentTypeHeader: 'application/json'}
     );
 
+    print(response.body);
     if(response.statusCode == 200){
       var jsonResponse  = jsonDecode(response.body);
       ApiResponse rresponse = ApiResponse.fromJson(jsonResponse);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'tabs/tabCustomer.dart';
 import 'tabs/tabService.dart';
+import 'tabs_login/customer.dart';
 class LoginActivity extends StatefulWidget {
   const LoginActivity({Key? key}) : super(key: key);
 
@@ -40,12 +41,14 @@ class _LoginActivityState extends State<LoginActivity> {
                                         Tab(child: Text("Customer" , style: TextStyle(color: Colors.blue),),)
                                   ]
                                   ),
-                                  TabBarView(children: [
-                                    //tab1
-                                    TabService(),
-                                    //tab2
-                                    TabCustomer()
-                                  ])
+                                  Expanded(
+                                    child: TabBarView(children: [
+                                      //tab1
+                                      TabService(),
+                                      //tab2
+                                      Customer()
+                                    ]),
+                                  )
 
                            ]
                           ),

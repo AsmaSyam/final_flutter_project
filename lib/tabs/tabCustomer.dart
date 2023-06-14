@@ -131,9 +131,20 @@ class _TabCustomerState extends State<TabCustomer> {
   }
   Future<void> _register() async{
     ApiResponse response = await ApiController().register(user1: user);
+    print(response.data);
     if(response.success!){
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Customer()));
+    }else{
+      const snackBar = SnackBar(
+        content: Text("عذراً هذا البريد مستخدم من قبل"
+        ),
+      );
+
+      // Find the ScaffoldMessenger in the widget tree
+      // and use it to show a SnackBar.
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
+
   }
 
   User get user{

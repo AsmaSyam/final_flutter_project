@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'tabs/tabCustomer.dart';
 import 'tabs_login/customer.dart';
 import 'tabs_login/service.dart';
 
@@ -40,12 +41,14 @@ class _RegisterActivityState extends State<RegisterActivity> {
                               Tab(child: Text("Customer" , style: TextStyle(color: Colors.blue),),)
                             ]
                         ),
-                        TabBarView(children: [
-                          //tab1
-                          Service(),
-                          //tab2
-                          Customer()
-                        ])
+                        Expanded(
+                          child: TabBarView(children: [
+                            //tab1
+                            Service(),
+                            //tab2
+                            TabCustomer()
+                          ]),
+                        )
 
                       ]
                   ),
