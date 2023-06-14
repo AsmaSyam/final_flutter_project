@@ -19,7 +19,8 @@ class ApiController{
 
     http.Response response = await http.post(uri ,
         body: map ,
-        headers: {HttpHeaders.contentTypeHeader: 'application/json'});
+       // headers: {HttpHeaders.contentTypeHeader: 'application/json'}
+    );
 
     if(response.statusCode == 200){
       var jsonResponse  = jsonDecode(response.body);
@@ -41,7 +42,8 @@ class ApiController{
 
     http.Response response = await http.post(uri ,
         body: user1.toJsonRegister() ,
-        headers: {HttpHeaders.contentTypeHeader: 'application/json'});
+      //  headers: {HttpHeaders.contentTypeHeader: 'application/json'}
+    );
 
     if(response.statusCode == 200){
       var jsonResponse  = jsonDecode(response.body);

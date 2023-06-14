@@ -1,7 +1,7 @@
 import 'package:final_flutter_project/controller/api_controller.dart';
 import 'package:final_flutter_project/controller/api_response.dart';
 import 'package:final_flutter_project/controller/user.dart';
-import 'package:final_flutter_project/home_activity.dart';
+import 'package:final_flutter_project/tabs_login/customer.dart';
 import 'package:flutter/material.dart';
 class TabCustomer extends StatefulWidget {
   const TabCustomer({Key? key}) : super(key: key);
@@ -132,7 +132,7 @@ class _TabCustomerState extends State<TabCustomer> {
   Future<void> _register() async{
     ApiResponse response = await ApiController().register(user1: user);
     if(response.success!){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeActivity()));
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Customer()));
     }
   }
 
