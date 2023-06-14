@@ -21,7 +21,7 @@ class ApiController{
         body: map ,
         headers: {HttpHeaders.contentTypeHeader: 'application/json'});
 
-    if(response.statusCode == 200 || response.statusCode == 400){
+    if(response.statusCode == 200){
       var jsonResponse  = jsonDecode(response.body);
       ApiResponse rresponse = ApiResponse.fromJson(jsonResponse);
       if(response.statusCode == 200){
@@ -43,7 +43,7 @@ class ApiController{
         body: user1.toJsonRegister() ,
         headers: {HttpHeaders.contentTypeHeader: 'application/json'});
 
-    if(response.statusCode == 201 || response.statusCode == 400){
+    if(response.statusCode == 200){
       var jsonResponse  = jsonDecode(response.body);
       ApiResponse rresponse = ApiResponse.fromJson(jsonResponse);
       return rresponse;
