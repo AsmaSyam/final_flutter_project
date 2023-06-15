@@ -1,5 +1,7 @@
 import 'package:final_flutter_project/controller/dateRepo.dart';
+import 'package:final_flutter_project/prfProvider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeActivity extends StatelessWidget{
   @override
@@ -36,16 +38,11 @@ class HomeActivity extends StatelessWidget{
             padding: const EdgeInsets.only(top: 15),
             child: Text("Select Service" , style: TextStyle(fontSize: 19 , color: Colors.blue)),
           ) ,
-          FutureBuilder<dynamic>(
-              future: DataRepo().getAllWorks(),
-              builder: (context, snapshot) {
-              if(snapshot.connectionState == ConnectionState.waiting){
-              return Center(child: CircularProgressIndicator());
-              }else if(snapshot.connectionState == ConnectionState.done &&
-               snapshot.data != null){
-                return Expanded(
-                  child: GridView.builder(
-                    itemCount: 4 ,
+
+              Consumer<GetProvider>(
+                builder: (context, value, child) {
+                  return GridView.builder(
+                    itemCount: value.list.length ,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 4.0,
@@ -55,37 +52,35 @@ class HomeActivity extends StatelessWidget{
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
-                              padding: const EdgeInsets.only(top: 14),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.pinkAccent),
-                              ),
-                               child: Column(
-                                 children: [
-                                   SizedBox(
-                                       width: 60 ,
-                                       height: 60 ,
-                                       child: Image.network(
-                                         "${snapshot.data![index].icon}",
-                                         fit: BoxFit.cover,
-                                       ),
-
-                                   ),
-                                   Text(snapshot.data![index].name!)
-                                 ],
-                               )
-
+                            padding: const EdgeInsets.only(top: 14),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.pinkAccent),
                             ),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: 60 ,
+                                  height: 60 ,
+                                  child: Image.network(
+                                    "${value.list[index].icon}",
+                                    fit: BoxFit.cover,
+                                  ),
+
+                                ),
+                                Text(value.list[index].name!)
+                              ],
+                            )
+
+                        ),
                       );
 
                     },
-                  ),
-                );
-              }else{
-                return Center(child: Text("data is  not found"));
-              }
-              },
-          ),
-        ],
+                  );
+                },
+
+              ),
+
+     ],
       ),
     );
   }
