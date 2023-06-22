@@ -2,6 +2,7 @@
 import 'package:final_flutter_project/controller/api_controller.dart';
 import 'package:final_flutter_project/controller/api_response.dart';
 import 'package:final_flutter_project/home_activity.dart';
+import 'package:final_flutter_project/register_activity.dart';
 import 'package:flutter/material.dart';
 
 class Customer extends StatefulWidget {
@@ -59,16 +60,36 @@ class _CustomerState extends State<Customer> {
               ),
             ),
           ) ,
-          Padding(
-            padding: const EdgeInsets.fromLTRB(160, 70, 0, 0),
-            child: SizedBox(
-              width: 160,
-              height: 60,
-              child: ElevatedButton(
-              onPressed: ()async => await _prefFormLogin()
-              , child: Text("SIGN UP" , style: TextStyle(color: Colors.white , fontSize: 20),)),
-            ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 60 , left: 30),
+                    child: Text("New Member?", style: TextStyle(fontSize: 15)),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => RegisterActivity()));
+                    },
+                    child: Text("Sign up" , style: TextStyle(color: Colors.blueAccent ,fontSize: 20
+                    ),),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(60, 70, 0, 0),
+                child: SizedBox(
+                  width: 160,
+                  height: 60,
+                  child: ElevatedButton(
+                      onPressed: ()async => await _prefFormLogin()
+                      , child: Text("LOGIN" , style: TextStyle(color: Colors.white , fontSize: 20),)),
+                ),
+              )
+            ],
           )
+
         ],
       ),
     );

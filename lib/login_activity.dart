@@ -24,39 +24,49 @@ class _LoginActivityState extends State<LoginActivity> {
           elevation: 0,
         ),
         body:
-            Padding(
-              padding: const EdgeInsets.only(top: 74),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(25),
-                  ),
-                  child: Center(
-                    child: Container(
-                      color: Colors.white,
-                      child: Column(
-                        children: const [
-                                  TabBar(
-                                      tabs: [
-                                    Tab(child: Text("Service provider" , style: TextStyle(color: Colors.blue),), ) ,
-                                        Tab(child: Text("Customer" , style: TextStyle(color: Colors.blue),),)
-                                  ]
-                                  ),
-                                  Expanded(
-                                    child: TabBarView(children: [
-                                      //tab1
-                                      TabService(),
-                                      //tab2
-                                      Customer()
-                                    ]),
-                                  )
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: Image.asset("images/logo.png" , width: 100, height: 100,),
+              ),
+              Expanded(
+                child: Padding(
+                    padding: const EdgeInsets.only(top: 80),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      child: Center(
+                        child: Container(
+                          color: Colors.white,
+                          child: Column(
+                              children: const [
+                                TabBar(
+                                    tabs: [
+                                      Tab(child: Text("Service provider" , style: TextStyle(color: Colors.blue),), ) ,
+                                      Tab(child: Text("Customer" , style: TextStyle(color: Colors.blue),),)
+                                    ]
+                                ),
+                                Expanded(
+                                  child: TabBarView(children: [
+                                    //tab1
+                                    TabService(),
+                                    //tab2
+                                    Customer()
+                                  ]),
+                                )
 
-                           ]
+                              ]
                           ),
-                    ),
-                  ),
+                        ),
+                      ),
 
-                  )
+                    )
                 ),
+              ),
+            ],
+          )
 
             )
 

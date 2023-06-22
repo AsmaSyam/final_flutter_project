@@ -1,6 +1,7 @@
 import 'package:final_flutter_project/controller/api_controller.dart';
 import 'package:final_flutter_project/controller/api_response.dart';
 import 'package:final_flutter_project/controller/user.dart';
+import 'package:final_flutter_project/login_activity.dart';
 import 'package:final_flutter_project/tabs_login/customer.dart';
 import 'package:flutter/material.dart';
 class TabCustomer extends StatefulWidget {
@@ -99,16 +100,36 @@ class _TabCustomerState extends State<TabCustomer> {
               ),
             ),
           ) ,
-          Padding(
-            padding: const EdgeInsets.fromLTRB(160, 70, 0, 0),
-            child: SizedBox(
-              width: 160,
-              height: 60,
-              child: ElevatedButton(
-                  onPressed: ()async => await _prefFormRegister()
-                 , child: Text("SIGN UP" , style: TextStyle(color: Colors.white , fontSize: 20),)),
-            ),
+          Row(
+            children: [
+              Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 60 , left: 30),
+                    child: Text("Have Account?", style: TextStyle(fontSize: 15)),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginActivity()));
+                    },
+                    child: Text("SIGN IN" , style: TextStyle(color: Colors.blueAccent ,fontSize: 20
+                    ),),
+                  )
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(60, 70, 0, 0),
+                child: SizedBox(
+                  width: 160,
+                  height: 60,
+                  child: ElevatedButton(
+                      onPressed: ()async => await _prefFormRegister()
+                      , child: Text("SIGN UP" , style: TextStyle(color: Colors.white , fontSize: 20),)),
+                ),
+              )
+            ],
           )
+
         ],
       ),
     );

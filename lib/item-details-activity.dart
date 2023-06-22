@@ -48,7 +48,42 @@ class _ItemDetailsActivityState extends State<ItemDetailsActivity> {
             )
         ),
         ),
-      )
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 0,
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.lightBlueAccent,
+        items: [
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: const EdgeInsets.fromLTRB(8, 4, 0, 0),
+              child: Image.asset("images/logo.png" , width: 32, height: 32,),
+            ),
+            label: "Service",
+
+          ) ,
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.fromLTRB(33, 5, 30, 0),
+                child: Image.asset("images/img_7.png" , width: 26, height: 30,),
+              ),
+              label: "Orders"
+          ) ,
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.fromLTRB(27, 13, 30, 0),
+                child: Image.asset("images/img_8.png" , width: 25, height: 25, color: Colors.white,),
+              ),
+              label: "User"
+          ) ,
+          BottomNavigationBarItem(
+              icon: Padding(
+                  padding: const EdgeInsets.fromLTRB(25, 11, 30, 0),
+                  child: Icon(Icons.more_horiz_rounded, color: Colors.white)),
+              label: "More"
+          ) ,
+        ],
+      ),
     );
   }
 }

@@ -11,10 +11,12 @@ import 'filled-activity.dart';
 import 'home_activity.dart';
 import 'item-details-activity.dart';
 import 'login_activity.dart';
+import 'more-activity.dart';
 import 'on_boarding.dart';
 import 'on_boarding2.dart';
 import 'on_boarding3.dart';
 import 'register_activity.dart';
+import 'smith_activity.dart';
 import 'tabs/tabCustomer.dart';
 import 'tabs_login/customer.dart';
 
@@ -55,7 +57,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ProfileActivity(),
+        home: SmithActivity(),
+
       ),
     );
   }
